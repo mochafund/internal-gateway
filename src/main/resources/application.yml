@@ -1,0 +1,21 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: internal-gateway
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI}
+
+logging:
+  level:
+    org.springframework.web.reactive.function.client: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info

@@ -1,0 +1,17 @@
+services:
+ internal-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: internal-gateway
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      KEYCLOAK_ISSUER_URI: ${KEYCLOAK_ISSUER_URI}
+    ports:
+      - "8001:8001"
+    networks:
+      - beaver-network
+
+networks:
+  beaver-network:
+    external: true
