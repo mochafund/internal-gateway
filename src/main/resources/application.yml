@@ -10,6 +10,24 @@ spring:
         jwt:
           issuer-uri: ${KEYCLOAK_ISSUER_URI}
 
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 2000
+        response-timeout: 5s
+      default-filters:
+        - RemoveRequestHeader=Cookie
+        - RemoveResponseHeader=Server
+
+      routes:
+        # /api/identity/** -> identity-service:8002/**
+        - id: identity
+          uri: http://identity-service:8002
+          predicates:
+            - Path=/api/identity/**
+          filters:
+            - StripPrefix=1
+
 logging:
   level:
     org.springframework.web.reactive.function.client: INFO
