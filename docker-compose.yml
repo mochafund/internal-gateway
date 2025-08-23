@@ -1,9 +1,10 @@
 services:
  internal-gateway:
+    container_name: internal-gateway
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: internal-gateway
+    image: internal-gateway:latest
     environment:
       SPRING_PROFILES_ACTIVE: docker
       KEYCLOAK_ISSUER_URI: ${KEYCLOAK_ISSUER_URI}
