@@ -15,10 +15,6 @@ spring:
       httpclient:
         connect-timeout: 2000
         response-timeout: 5s
-      default-filters:
-        - RemoveRequestHeader=Cookie
-        - RemoveResponseHeader=Server
-
       routes:
         # /api/identity/** -> identity-service:8002/**
         - id: identity
