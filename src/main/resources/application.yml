@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: ${PORT}
 
 spring:
   application:
@@ -16,9 +16,9 @@ spring:
         connect-timeout: 2000
         response-timeout: 5s
       routes:
-        # /api/identity/** -> identity-service:8002/**
+        # /api/identity/** -> /**
         - id: identity
-          uri: http://identity-service:8002
+          uri: ${IDENTITY_SERVICE_URI}
           predicates:
             - Path=/api/identity/**
           filters:

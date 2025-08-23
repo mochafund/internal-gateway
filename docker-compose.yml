@@ -6,10 +6,12 @@ services:
       dockerfile: Dockerfile
     image: internal-gateway:latest
     environment:
+      PORT: ${PORT}
       SPRING_PROFILES_ACTIVE: docker
       KEYCLOAK_ISSUER_URI: ${KEYCLOAK_ISSUER_URI}
+      IDENTITY_SERVICE_URI: ${IDENTITY_SERVICE_URI}
     ports:
-      - "8001:8001"
+      - "${PORT}:${PORT}"
     networks:
       - beaver-network
 
