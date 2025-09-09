@@ -14,8 +14,8 @@ services:
     ports:
       - "${PORT}:${PORT}"
     networks:
-      - beaver-network
+      - mocha-network
 
 networks:
-  beaver-network:
+  mocha-network:
     external: true

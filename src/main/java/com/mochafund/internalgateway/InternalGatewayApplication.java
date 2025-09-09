@@ -1,4 +1,4 @@
-package com.beaver.internalgateway;
+package com.mochafund.internalgateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.beaver.internalgateway.config;
+package com.mochafund.internalgateway.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
