@@ -23,6 +23,12 @@ spring:
             - Path=/api/identity/**
           filters:
             - StripPrefix=2
+        - id: transactions
+          uri: ${TRANSACTIONS_SERVICE_URI}
+          predicates:
+            - Path=/api/transactions/**
+          filters:
+            - StripPrefix=2
 
 logging:
   level:
