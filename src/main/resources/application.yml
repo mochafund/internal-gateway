@@ -30,6 +30,13 @@ spring:
             - Path=/api/transactions/**
           filters:
             - StripPrefix=2
+        # /api/workspaces/** -> /**
+        - id: workspaces
+          uri: ${mochafund.workspace-service.uri}
+          predicates:
+            - Path=/api/workspaces/**
+          filters:
+            - StripPrefix=2
 
 logging:
   level:
@@ -51,3 +58,5 @@ mochafund:
     uri: ${IDENTITY_SERVICE_URI}
   transactions-service:
     uri: ${TRANSACTIONS_SERVICE_URI}
+  workspace-service:
+    uri: ${WORKSPACE_SERVICE_URI}
