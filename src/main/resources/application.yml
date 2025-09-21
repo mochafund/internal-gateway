@@ -8,7 +8,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${KEYCLOAK_BASE_URI}/realms/${KEYCLOAK_ENVIRONMENT}
+          issuer-uri: ${keycloak.admin.base-url}/realms/${keycloak.admin.realm}
 
   cloud:
     gateway:
@@ -18,13 +18,14 @@ spring:
       routes:
         # /api/identity/** -> /**
         - id: identity
-          uri: ${IDENTITY_SERVICE_URI}
+          uri: ${mochafund.identity-service.uri}
           predicates:
             - Path=/api/identity/**
           filters:
             - StripPrefix=2
+        # /api/transactions/** -> /**
         - id: transactions
-          uri: ${TRANSACTIONS_SERVICE_URI}
+          uri: ${mochafund.transactions-service.uri}
           predicates:
             - Path=/api/transactions/**
           filters:
@@ -39,3 +40,14 @@ management:
     web:
       exposure:
         include: health, info
+
+keycloak:
+  admin:
+    base-url: ${KEYCLOAK_BASE_URI}
+    realm: ${KEYCLOAK_ENVIRONMENT}
+
+mochafund:
+  identity-service:
+    uri: ${IDENTITY_SERVICE_URI}
+  transactions-service:
+    uri: ${TRANSACTIONS_SERVICE_URI}
